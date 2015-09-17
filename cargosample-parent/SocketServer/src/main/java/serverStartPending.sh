@@ -96,11 +96,11 @@ echo "@@@@@@@@@@@@@@@@@@@@@@@@@@@@@" $totalNum
 if [ $totalNum -eq 9 ];
 then
    
-	 #cp /root/.jenkins/workspace/ffg_cargo_git/cargosample-parent/SocketServer/target/SocketServer-0.0.1-SNAPSHOT.jar /usr/java/jdk1.7.0_79/jre/lib/ext
-	 #java -Xms50m -Xmx250m startcontrol.SocketServer >> /usr/ffg_server/logout1.txt &
-	 STR=".:/usr/java/jdk1.7.0_79/lib:/usr/java/jdk1.7.0_79/jre/lib:/root/ffg_runhome/lib/httpasyncclient-cache-4.1.jar:/root/ffg_runhome/lib/jdom.jar:/root/ffg_runhome/lib/mysql-connector-java-5.1.7-bin.jar:/root/ffg_runhome/lib/httpclient-4.4.1.jar:/root/ffg_runhome/lib/jsch-0.1.53.jar:/root/ffg_runhome/lib/commons-codec-1.9.jar:/root/ffg_runhome/lib/httpclient-cache-4.4.1.jar:/root/ffg_runhome/lib/log4j-1.2.17.jar:/root/ffg_runhome/lib/commons-logging-1.2.jar:/root/ffg_runhome/lib/httpcore-4.4.1.jar:/root/ffg_runhome/lib/httpcore-nio-4.4.1.jar:/root/ffg_runhome/lib/httpasyncclient-4.1.jar:/root/ffg_runhome/lib/javacsv.jar:/root/ffg_runhome/lib/ProjectFile.jar"
- 	 export CLASSPATH=$STR
-	 java -Xms50m -Xmx250m startcontrol.SocketServer >> logout1.txt &
+	 cp /root/.jenkins/workspace/ffg_cargo_git/cargosample-parent/SocketServer/target/SocketServer-0.0.1-SNAPSHOT.jar /usr/java/jdk1.7.0_79/jre/lib/ext
+	 java -Xms50m -Xmx250m startcontrol.SocketServer >> /usr/ffg_server/logout1.txt &
+	 #STR=".:/usr/java/jdk1.7.0_79/lib:/usr/java/jdk1.7.0_79/jre/lib:/root/ffg_runhome/lib/httpasyncclient-cache-4.1.jar:/root/ffg_runhome/lib/jdom.jar:/root/ffg_runhome/lib/mysql-connector-java-5.1.7-bin.jar:/root/ffg_runhome/lib/httpclient-4.4.1.jar:/root/ffg_runhome/lib/jsch-0.1.53.jar:/root/ffg_runhome/lib/commons-codec-1.9.jar:/root/ffg_runhome/lib/httpclient-cache-4.4.1.jar:/root/ffg_runhome/lib/log4j-1.2.17.jar:/root/ffg_runhome/lib/commons-logging-1.2.jar:/root/ffg_runhome/lib/httpcore-4.4.1.jar:/root/ffg_runhome/lib/httpcore-nio-4.4.1.jar:/root/ffg_runhome/lib/httpasyncclient-4.1.jar:/root/ffg_runhome/lib/javacsv.jar:/root/ffg_runhome/lib/ProjectFile.jar"
+ 	 #export CLASSPATH=$STR
+	 #java -Xms50m -Xmx250m startcontrol.SocketServer >> logout1.txt &
 	 echo "all webapp is started"
 
 
