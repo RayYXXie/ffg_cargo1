@@ -1,0 +1,106 @@
+<?xml version="1.0"?>
+<project xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd" xmlns="http://maven.apache.org/POM/4.0.0"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <modelVersion>4.0.0</modelVersion>
+  <parent>
+    <artifactId>cargosample-parent</artifactId>
+    <groupId>org.jdonee.cargosample</groupId>
+    <version>0.0.1-SNAPSHOT</version>
+  </parent>
+  <groupId>org.jdonee.cargosample</groupId>
+  <artifactId>cargosample-deployer-local3</artifactId>
+  <version>0.0.1-SNAPSHOT</version>
+  <packaging>pom</packaging>
+  <name>cargosample-deployer-local3 Multi Project</name>
+  <url>http://maven.apache.org</url>
+  <dependencies>
+
+	   <!-- <dependency> 
+        <groupId>xpp3</groupId> 
+        <artifactId>xpp3</artifactId> 
+        <version>1.1.3.4.O</version> 
+        <scope>system</scope> 
+        <systemPath>/usr/ffg_server/xpp3-1.1.3.4.O.jar</systemPath> 
+    </dependency> -->
+	    <dependency>
+			<groupId>org.jdonee.cargosample</groupId>
+			<artifactId>web1</artifactId>
+			<version>0.0.1-SNAPSHOT</version>
+			<type>war</type>
+		</dependency>
+		<dependency>
+			<groupId>org.jdonee.cargosample</groupId>
+			<artifactId>web5</artifactId>
+			<version>0.0.1-SNAPSHOT</version>
+			<type>war</type>
+		</dependency>
+  </dependencies>
+  <build>
+		<plugins>
+			<plugin>
+				<groupId>org.codehaus.cargo</groupId>
+				<artifactId>cargo-maven2-plugin</artifactId>
+				<version>1.0.3</version>
+				<configuration>
+					<wait>true</wait>
+					<container>
+						<containerId>tomcat6x</containerId>
+						<type>installed</type>
+						<home>/usr/ffg_server/apache-tomcat-6.0.44-3</home>
+					</container>
+					<configuration>
+						<type>existing</type>
+						<home>/usr/ffg_server/apache-tomcat-6.0.44-3</home>
+						<properties>
+							<cargo.tomcat.manager.url>
+							${cargo.tomcat.manager.protocol}://${cargo.tomcat.manager.hostname}:28080/manager
+							</cargo.tomcat.manager.url>
+							<cargo.remote.username>${cargo.tomcat.manager.username}</cargo.remote.username>
+							<cargo.remote.password>${cargo.tomcat.manager.password}</cargo.remote.password>
+							<cargo.tomcat.ajp.port>28009</cargo.tomcat.ajp.port> <!-- ajp端口,默认8009 -->
+						</properties>
+					</configuration>
+					<deployer>
+						<type>installed</type>
+						<deployables>
+							<deployable>
+								 <groupId>org.jdonee.cargosample</groupId> 
+								 <artifactId>web1</artifactId>
+								 <type>war</type>
+								 <properties>
+								 <context>/web1</context>
+								 </properties>
+							</deployable>
+							<deployable>
+								 <groupId>org.jdonee.cargosample</groupId> 
+								 <artifactId>web5</artifactId>
+								 <type>war</type>
+								 <properties>
+								 <context>/web5</context>
+								 </properties>
+							</deployable>
+						</deployables>
+					</deployer>
+				</configuration>
+				<executions>
+				
+                <execution>
+                    <id>start-container</id>
+                    <phase>pre-integration-test</phase>
+                    <goals><goal>deployer-deploy</goal></goals>
+                </execution>
+                
+
+           <!--       
+                <execution>
+                    <id>clean-undeploy</id>
+                    <phase>pre-clean</phase>
+                    <goals><goal>deployer-undeploy</goal><goal>stop</goal>
+                    </goals>
+                </execution> 
+            -->     
+            </executions>
+			</plugin>
+		</plugins>
+	</build>
+</project>

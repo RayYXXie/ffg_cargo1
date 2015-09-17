@@ -1,0 +1,92 @@
+<project xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd" xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+<modelVersion>4.0.0</modelVersion>
+  <groupId>org.jdonee.cargosample</groupId>
+  <artifactId>cargosample-parent</artifactId>
+  <packaging>pom</packaging>
+  <version>0.0.1-SNAPSHOT</version>
+  <name>cargosample-parent Multi Project</name>
+  <url>http://maven.apache.org</url>
+  <modules>
+    <module>cargosample-deployer-local</module>
+    <module>cargosample-deployer-local2</module>
+    <module>web1</module>
+    <module>web2</module> 
+    <module>web3</module>
+    <module>web4</module>
+    <module>web5</module>
+    <module>STsocketServer</module>
+    <module>STsocketClient</module>
+    <module>SocketServer</module>
+    <module>SocketClient</module>
+    <module>cargosample-deployer-local3</module>
+  </modules>
+  
+  <properties>
+		<org.springframework.version>3.0.3.RELEASE</org.springframework.version>
+		<org.slf4j.version>1.5.10</org.slf4j.version>
+		<myproject.name>cargosample</myproject.name>
+		<cargo.project.groupid>${project.groupId}</cargo.project.groupid>
+		<cargo.project.artifactid>cargosample-webapp</cargo.project.artifactid>
+		<catalina.home>${env.CATLINA_HOME}</catalina.home>
+		<cargo.tomcat.manager.protocol>http</cargo.tomcat.manager.protocol>
+		<cargo.tomcat.manager.hostname>127.0.0.1</cargo.tomcat.manager.hostname>
+		<cargo.tomcat.manager.port>8080</cargo.tomcat.manager.port>
+		<cargo.tomcat.manager.ajp.port>8009</cargo.tomcat.manager.ajp.port>
+		<cargo.tomcat.manager.username>admin</cargo.tomcat.manager.username>
+		<cargo.tomcat.manager.password>admin</cargo.tomcat.manager.password>
+	
+ </properties>
+<!--  
+ <dependencies> 
+  <dependency> 
+        <groupId>xpp3</groupId> 
+        <artifactId>xpp3</artifactId> 
+        <version>1.1.3.4.O</version> 
+        <scope>system</scope> 
+        <systemPath>/usr/ffg_server/xpp3-1.1.3.4.O.jar</systemPath> 
+    </dependency>
+</dependencies>
+ -->
+  <repositories>
+		<!-- For Hibernate Validator -->
+		<repository>
+			<id>org.jboss.repository.release</id>
+			<name>JBoss Maven Release Repository</name>			
+			<url>https://repository.jboss.org/nexus/content/repositories/releases</url>
+			<snapshots><enabled>false</enabled></snapshots>			
+		</repository>
+	</repositories>
+	<build>
+   <plugins>
+      <plugin>  
+        <groupId>org.apache.maven.plugins</groupId>  
+        <artifactId>maven-javadoc-plugin</artifactId>  
+      </plugin>
+     <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-enforcer-plugin</artifactId>
+        <version>1.0-beta-1</version>
+        <executions>
+          <execution>
+            <id>enforce-versions</id>
+            <goals>
+              <goal>enforce</goal>
+            </goals>
+            <configuration>
+              <rules>
+                <requireMavenVersion>
+                  <version>2.2.1</version>
+                </requireMavenVersion>
+                <requireJavaVersion>
+                  <version>1.5</version>
+                </requireJavaVersion>
+              </rules>
+            </configuration>
+          </execution>
+        </executions>
+      </plugin>  
+    </plugins>
+
+	
+  </build>
+</project>
