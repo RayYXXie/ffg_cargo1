@@ -5,7 +5,7 @@ import java.util.List;
 import java.util.Map.Entry;
 import java.util.concurrent.ConcurrentMap;
 
-import junit.framework.Assert;
+//import junit.framework.Assert;
 
 import org.apache.log4j.Logger;
 
@@ -16,7 +16,7 @@ public class CommonUtils {
 		
 
 	/**
-	 * ³õÊ¼»¯case³É¹¦×´Ì¬Map value Ä¬ÈÏÖÃÎª1£¨³É¹¦£©
+	 * åˆå§‹åŒ–caseæˆåŠŸçŠ¶æ€Map value é»˜è®¤ç½®ä¸º1ï¼ˆæˆåŠŸï¼‰
 	 * 
 	 * @param list
 	 * @param map
@@ -34,7 +34,7 @@ public class CommonUtils {
 	}
 
 	/**
-	 * ½«×îÖÕµÄ½á¹û´òÓ¡µ½log4jµÄÈÕÖ¾ÎÄ¼şÖĞ
+	 * å°†æœ€ç»ˆçš„ç»“æœæ‰“å°åˆ°log4jçš„æ—¥å¿—æ–‡ä»¶ä¸­
 	 * @param map
 	 * @param logger
 	 */
@@ -44,9 +44,9 @@ public class CommonUtils {
 			Entry<String, String> e = iterator.next();
 			String key = e.getKey();
 			String value = e.getValue();
-			Assert.assertEquals(value, "1");
-			value = value.equals("1")?"³É¹¦":"Ê§°Ü";
-			logger.info("caseId Îª"+key+"µÄCaseÆä²âÊÔ½á¹ûÎª:"+value);
+			//Assert.assertEquals(value, "1");
+			value = value.equals("1")?"æˆåŠŸ":"å¤±è´¥";
+			logger.info("caseId ä¸º"+key+"çš„Caseå…¶æµ‹è¯•ç»“æœä¸º:"+value);
 		}
 
 	}
