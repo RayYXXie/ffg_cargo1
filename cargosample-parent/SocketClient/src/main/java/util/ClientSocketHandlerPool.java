@@ -19,13 +19,13 @@ import startcontrol.SocketClient;
 
 public class ClientSocketHandlerPool {
 	
-	//¶¨ÒåÒ»¸öºËĞÄÏß³ÌÊıÎª30µÄ¾²Ì¬µÄÏß³Ì³Ø
+	//å®šä¹‰ä¸€ä¸ªæ ¸å¿ƒçº¿ç¨‹æ•°ä¸º30çš„é™æ€çš„çº¿ç¨‹æ± 
 	public static final ExecutorService threadPool = new ThreadPoolExecutor(8, 4000, 120, TimeUnit.SECONDS,new LinkedBlockingDeque<Runnable>() );
 
 	/**
-	 * ½«Ã¿Ò»ÌõÊı¾İ½»¸øÒ»¸öÏß³Ì£¬Í¬Ê±½«Ïß³Ì½»¸øÏß³Ì³Ø¹ÜÀí
-	 * @param socket ´«½øÀ´µÄÍ¨Ñ¶socket
-	 * @param object ´«½øÀ´µÄcaseµÄÒ»ÌõÊı¾İ
+	 * å°†æ¯ä¸€æ¡æ•°æ®äº¤ç»™ä¸€ä¸ªçº¿ç¨‹ï¼ŒåŒæ—¶å°†çº¿ç¨‹äº¤ç»™çº¿ç¨‹æ± ç®¡ç†
+	 * @param socket ä¼ è¿›æ¥çš„é€šè®¯socket
+	 * @param object ä¼ è¿›æ¥çš„caseçš„ä¸€æ¡æ•°æ®
 	 */
 	public static void addSocketToThreadPool(final Socket socket, final InitialDataObject object) {
 
@@ -39,11 +39,11 @@ public class ClientSocketHandlerPool {
 				CXFreturnResult result = null;
 				try {
 					
-					// ÊäÈë¶ÔÏó flush£¨£©
+					// è¾“å…¥å¯¹è±¡ flushï¼ˆï¼‰
 					oos = new ObjectOutputStream(socket.getOutputStream());
 					oos.writeObject(object);
 					oos.flush();
-					// ½¨Á¢ÊäÈëÁ÷
+					// å»ºç«‹è¾“å…¥æµ
 					ois = new ObjectInputStream(socket.getInputStream());
 					obj = ois.readObject();
 					result = (CXFreturnResult) obj;
@@ -67,7 +67,7 @@ public class ClientSocketHandlerPool {
 					insertObj.setActuallyValue(Float.parseFloat(result.getExpectedValue()));
 					insertObj.setExpectedValue(expectData.getExpectedValue());
 					
-					insertObj.setModifyTime("20150812");
+					insertObj.setModifyTime(DateFormatUtil.getFormatNowTime("yyyyMMddHHmmss"));
 					insertObj.setMsgType(result.getMsgType());
 					insertObj.setOnbehalfOfCompId(result.getOnBehalfOfCompID());
 					insertObj.setResult(passResult);
@@ -113,7 +113,7 @@ public class ClientSocketHandlerPool {
 	
 	
 	/**
-	 * ¹Ø±ÕÏß³Ì³Ø
+	 * å…³é—­çº¿ç¨‹æ± 
 	 */
 	public static void shutDownThreadPool(){
 		threadPool.shutdown();
